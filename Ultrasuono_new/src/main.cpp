@@ -2,8 +2,7 @@
 #include "DaisyDuino.h"
 #include <U8g2lib.h>
 #include <Adafruit_AHTX0.h>
-
-
+#include "SD.h"
 // Definizione delle variabili globali
 DaisyHardware hw;
 daisysp::ReverbSc reverb;
