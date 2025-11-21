@@ -2,7 +2,7 @@
 #include "DaisyDuino.h"
 #include <U8g2lib.h>
 #include <Adafruit_AHTX0.h>
-#include <MIDI.h>
+
 
 // Definizione delle variabili globali
 DaisyHardware hw;
@@ -184,11 +184,11 @@ void loop() {
     oled.print("$");
 
     oled.sendBuffer();
-    uint8_t *cc1;
-    uint8_t *cc2;
-    uint8_t *cc3;
-    Serial.write(controlChange(20,temp.temperature/50*127,1),sizeof(); // Invia temperatura su CC20
-    controlChange(21,humidity.relative_humidity/100*127,1); // Invia umidità su CC21
-    controlChange(22,lightLevel/100*127,1); // Invia luminosità su
+    uint8_t *cc1=controlChange(20,temp.temperature/50*127,1); // Invia temperatura su CC20
+    uint8_t *cc2=controlChange(21,humidity.relative_humidity/100*127,1); // Invia umidità su CC21
+    uint8_t *cc3=controlChange(22,lightLevel/100*127,1); // Invia luminosità su CC22
+    Serial.write(cc1,sizeof(cc1)); // Invia temperatura su CC20
+    Serial.write(cc2,sizeof(cc2)); // Invia umidità su CC21
+    Serial.write(cc3,sizeof(cc3)); // Invia luminosità su CC22
     delay(5);
 }
